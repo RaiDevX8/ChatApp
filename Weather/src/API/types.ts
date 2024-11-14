@@ -58,3 +58,4 @@ export interface Geocode{
     country:string;
     state:string
 }
+
