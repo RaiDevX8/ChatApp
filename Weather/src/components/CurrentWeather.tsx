@@ -21,12 +21,15 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     wind: { speed },
   } = data;
 
-  // Format the temperature with rounding to 2 decimal places
-  const formatTemp = (temp: number | undefined) => {
-    if (temp === undefined) return 'N/A'; // In case the temperature is not available
-    return `${Math.round(temp)}°`; // Round to nearest integer (or use temp.toFixed(2) for two decimal places)
-  };
 
+  // Format the temperature with rounding to 2 decimal places
+  const formatTemp = (temp: number | undefined): string => {
+    if (temp === undefined) return 'N/A';
+    // Convert Kelvin to Celsius
+    const celsiusTemp = temp - 273.15;
+    return `${Math.round(celsiusTemp)}°C`;
+  };
+  
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-6">
