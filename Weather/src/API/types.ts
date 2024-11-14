@@ -10,30 +10,29 @@ export interface WeatherCondition{
     icon:string;
 }
 
-export interface WeatherData{
-    coord:Cordinates;
-    weather:WeatherCondition[];
-    main:{
-        temp:number;
-        feels_like:number,
-        temp_min:number;
-        temp_max:number;
-        pressure:number;
-        humidity:number;
+export interface WeatherData {
+    coord: Cordinates;
+    weather: WeatherCondition[];
+    main: {
+      temp: number;
+      feels_like: number;
+      temp_min: number;
+      temp_max: number;
+      pressure: number;
+      humidity: number;
     };
-    wind:{
-        speed:number;
-        deg:number;
-    },
-    sys:{
-        sunrise:number;
-        sunset:number;
-        country:string;
-
+    wind: {
+      speed: number;
+      deg: number;
     };
-    name:string;
-    dt:number;
-}
+    sys: {
+      sunrise: number;
+      sunset: number;
+      country: string;
+    };
+    name: string;
+    dt: number;
+  }
 
 export interface ForcastData{
     list:Array<{
