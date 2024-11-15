@@ -2,10 +2,7 @@ import type { Geocode, WeatherData } from '@/API/types';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  
 } from "@/components/ui/card";
 import { ArrowDown, ArrowUp, Droplets, Wind } from 'lucide-react';
 

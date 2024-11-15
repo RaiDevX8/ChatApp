@@ -1,4 +1,4 @@
-import { MapPin, Moon, Pointer, Sun } from "lucide-react";
+import { MapPin, Moon,  Sun } from "lucide-react";
 import { useTheme } from "./theme-provider"
 import { Link } from "react-router-dom"
 import logo from "@/assets/logo.png"
@@ -7,7 +7,7 @@ import { useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { useGeoLocation } from "@/hooks/use-geolocation";
 const Header = () => {
   const {theme,setTheme}=useTheme();
-  const { isLoading: locationLoading, coordinates, error: locationError, getlocation } = useGeoLocation();
+  const { coordinates } = useGeoLocation();
 
   const locationQuery = useReverseGeocodeQuery(coordinates);
   const weatherQuery = useWeatherQuery(coordinates);

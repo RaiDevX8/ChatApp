@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Button } from './ui/button'
 import {
-    Command,
     CommandDialog,
     CommandEmpty,
     CommandGroup,
@@ -9,10 +8,10 @@ import {
     CommandItem,
     CommandList,
     CommandSeparator,
-    CommandShortcut,
+  
   } from "@/components/ui/command"
 import { useLocationSearch } from '@/hooks/use-weather';
-import { Circle, Loader2, Search, XCircle } from 'lucide-react';
+import {  Loader2, Search, XCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchHistory } from '@/hooks/use-search-hist';
   

@@ -7,7 +7,6 @@ import HourlyTemperature from '@/components/Hourlytemperature';
 import CurrentWeather from '@/components/CurrentWeather';
 import WeatherDetails from '@/components/WeatherDetails';
 import WeatherForcast from '@/components/WeatherForcast';
-import WeatherNews from '@/components/WeatherAlert';
 import Map from '@/components/Map';
 
 const city_page = () => {
