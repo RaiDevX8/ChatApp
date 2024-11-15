@@ -24,6 +24,8 @@ const Map = ({ coordinates }: MapProps) => {
     return null;
   };
 
+ 
+
   return (
     <div className="w-full h-96">
       {coordinates?.lat !== undefined && coordinates?.lon !== undefined ? (
@@ -32,9 +34,7 @@ const Map = ({ coordinates }: MapProps) => {
         >
           <MapViewUpdater />
           {/* Base Map Layer */}
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {/* Weather Overlays */}
           <TileLayer
             url={`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`}
@@ -42,7 +42,10 @@ const Map = ({ coordinates }: MapProps) => {
           <TileLayer
             url={`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`}
           />
-          <Marker position={[coordinates.lat, coordinates.lon]}>
+          {/* Marker with a custom icon */}
+          <Marker
+            position={[coordinates.lat, coordinates.lon]}
+          >
             <Popup>Your Location</Popup>
           </Marker>
         </MapContainer>

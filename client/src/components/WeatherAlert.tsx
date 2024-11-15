@@ -1,18 +1,27 @@
-import  { useEffect, useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; 
+import { useEffect, useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+
 const WeatherNews = () => {
   const [news, setNews] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [visibleCount, setVisibleCount] = useState(6); 
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const newsApiKey = import.meta.env.VITE_NEWS_API_KEY;
 
   useEffect(() => {
     const fetchWeatherNews = async () => {
+      if (!newsApiKey) {
+        setError('API key is missing.');
+        return;
+      }
+
       const url = `https://newsapi.org/v2/everything?q=weather&apiKey=${newsApiKey}`;
-console.log(newsApiKey)
+
       try {
         const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
         const data = await response.json();
 
         if (data.articles) {
@@ -36,14 +45,12 @@ console.log(newsApiKey)
     <div className="p-6">
       {error && <p className="text-red-500">{error}</p>}
       <h2 className="text-2xl font-bold mb-4">Weather News</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 rounded-full gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {news.slice(0, visibleCount).map((article, index) => (
           <Card key={index} className="border rounded-lg shadow-md">
-            {/* Card Header */}
-            <CardHeader className=" rounded  p-4">
+            <CardHeader className="p-4">
               <CardTitle className="text-lg font-semibold">{article.source.name}</CardTitle>
             </CardHeader>
-            {/* Card Content */}
             <CardContent className="p-6">
               <a
                 href={article.url}
@@ -59,7 +66,6 @@ console.log(newsApiKey)
         ))}
       </div>
 
-      {/* "Load More" Button */}
       {visibleCount < news.length && (
         <div className="text-center mt-6">
           <button
