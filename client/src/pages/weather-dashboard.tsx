@@ -17,6 +17,7 @@ const WeatherDashboard: React.FC = () => {
   const locationQuery = useReverseGeocodeQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
   const weatherQuery = useWeatherQuery(coordinates);
+  console.log("coo",coordinates)
 
   const handleRefresh = () => {
     getlocation();

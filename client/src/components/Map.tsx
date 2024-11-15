@@ -2,7 +2,11 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 
-const Map = ({coordinates}:any) => {
+interface typesP{
+  lat:number,
+  lon:number
+}
+const Map = ({coordinates}:typesP) => {
     console.log(coordinates)
     const MapViewUpdater = () => {
         const map = useMap();
