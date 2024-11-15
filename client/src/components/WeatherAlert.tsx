@@ -15,16 +15,25 @@ const WeatherNews = () => {
         setError('API key is missing.');
         return;
       }
-
+    
       const url = `https://gnews.io/api/v4/search?q=weather&lang=en&token=${NewApiKey}`;
-
+      console.log('Request URL:', url);
+    
       try {
         const response = await fetch(url);
+        
+        // Log the response status and body
+        console.log('Response Status:', response.status);
+        
         if (!response.ok) {
+          // Log response body for better error understanding
+          const responseBody = await response.json();
+          console.error('Response Body:', responseBody);
           throw new Error(`Network response was not ok: ${response.statusText}`);
         }
+    
         const data = await response.json();
-
+        
         if (data.articles && data.articles.length > 0) {
           setNews(data.articles);
         } else {
@@ -35,6 +44,7 @@ const WeatherNews = () => {
         setError('Failed to fetch weather news.');
       }
     };
+    
 
     fetchWeatherNews();
   }, [NewApiKey]);
