@@ -1,7 +1,6 @@
 
   import { API_CONFIG } from "./config";
   import { Cordinates, ForcastData, Geocode, WeatherData } from "./types";
-  
   class WeatherAPI {
     private createUrl(endpoint: string, params: Record<string, string | number>) {
       const searchParams = new URLSearchParams({
@@ -13,7 +12,6 @@
     }
   
     private async fetchData<T>(url: string): Promise<T> {
-      console.log(url); // Debugging the URL
       const response = await fetch(url);
   
       if (!response.ok) {
@@ -48,7 +46,19 @@
       });
       return this.fetchData<Geocode[]>(url);
     }
+
+    async searchLocation(query:string):Promise<Geocode[]>{
+      const url=this.createUrl(`${API_CONFIG.GEO}/direct`,{
+        q:query,
+        limit:"5"
+      })
+      console.log(url); // Debugging the URL
+
+      return this.fetchData<Geocode[]>(url);
+    }
   }
+
+  
   
   export const weatherAPI = new WeatherAPI();
   
