@@ -57,11 +57,11 @@ const CitySearch = () => {
 
                     )}
            
-            <CommandGroup heading="fovorites">
+            {/* <CommandGroup heading="fovorites">
                  <CommandItem>Calendar</CommandItem>
                  <CommandItem>Search Emoji</CommandItem>
                 <CommandItem>Calculator</CommandItem>
-            </CommandGroup>
+            </CommandGroup> */}
 
 
           { history.length >0&& <>

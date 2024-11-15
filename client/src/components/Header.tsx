@@ -1,10 +1,20 @@
-import { Moon, Sun } from "lucide-react";
+import { MapPin, Moon, Pointer, Sun } from "lucide-react";
 import { useTheme } from "./theme-provider"
 import { Link } from "react-router-dom"
 import logo from "@/assets/logo.png"
 import CitySearch from "./CitySearch";
+import { useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
+import { useGeoLocation } from "@/hooks/use-geolocation";
 const Header = () => {
   const {theme,setTheme}=useTheme();
+  const { isLoading: locationLoading, coordinates, error: locationError, getlocation } = useGeoLocation();
+
+  const locationQuery = useReverseGeocodeQuery(coordinates);
+  const weatherQuery = useWeatherQuery(coordinates);
+  weatherQuery.refetch();
+
+  locationQuery.refetch();
+
   const isDark = theme==="dark";
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-2">
@@ -13,7 +23,10 @@ const Header = () => {
           <Link to={"/"}>
                 <img src={logo} alt="logo"  className="h-36 w-36 "/>
           </Link>
-
+          <h1 className="text-sm mr-4 font-bold flex items-center ">
+          <MapPin className=" " /> 
+          {locationQuery?.data ? `${locationQuery.data[0].name}` : ""}
+        </h1>
           <div className="flex gap-4">
             {/* {serach} */}
             < CitySearch/>
