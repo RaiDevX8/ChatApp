@@ -22,12 +22,10 @@ const App = () => {
     <BrowserRouter>
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
     <Layout>
-      <div className="flex items-center">
                 <Routes>
                   <Route path='/' element={<Weatherdashboard/>}/>
                   <Route path='/city/:cityName' element={<City/>}/>
                   </Routes>     
-      </div>
       </Layout>
     </ThemeProvider>
       

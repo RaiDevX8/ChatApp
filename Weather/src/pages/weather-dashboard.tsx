@@ -6,6 +6,8 @@ import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hoo
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 import CurrentWeather from "@/components/CurrentWeather";
 import HourlyTemperature from "@/components/Hourlytemperature";
+import WeatherDetails from "@/components/WeatherDetails";
+import WeatherForcast from "@/components/WeatherForcast";
 const WeatherDashboard = () => {
   const { isLoading: locationLoading, coordinates, error: locationError, getlocation } = useGeoLocation();
   const locationQuery = useReverseGeocodeQuery(coordinates);
@@ -81,7 +83,7 @@ console.log(forecastQuery)
   
 
   return (
-    <div className="space-y-4 w-full">
+    <div className="space-y-4 ">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">
           My Location {locationQuery?.data ? ` - ${locationQuery.data[0].name}` : ""}
@@ -98,6 +100,11 @@ console.log(forecastQuery)
 )}
 
    { forecastQuery && <HourlyTemperature data={forecastQuery.data}/>}
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 items-start">
+          <WeatherDetails data={weatherQuery.data}/>
+          <WeatherForcast data={forecastQuery.data}/>
         </div>
       </div>
     </div>

@@ -9,7 +9,6 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 import type { ForcastData } from "@/API/types";
-import { D } from "node_modules/@tanstack/react-query-devtools/build/modern/ReactQueryDevtools-Cn7cKi7o";
 
 interface HourlyTemperatureProps {
   data: ForcastData;
@@ -21,7 +20,7 @@ interface ChartData {
   feels_like: number;
 }
 
-export function HourlyTemperature({ data }: HourlyTemperatureProps) {
+export default function HourlyTemperature({ data }: HourlyTemperatureProps) {
   // Get today's forecast data and format for chart
 
   const chartData: ChartData[] = data.list

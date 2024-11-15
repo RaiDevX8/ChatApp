@@ -39,7 +39,7 @@ export function ThemeProvider({
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"
-        : "light"
+        : "bg-gray-700"
 
       root.classList.add(systemTheme)
       return
