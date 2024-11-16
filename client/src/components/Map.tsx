@@ -33,7 +33,7 @@ const Map = ({ coordinates }: MapProps) => {
   return (
     <div className="w-full h-96">
       {coordinates?.lat !== undefined && coordinates?.lon !== undefined ? (
-        <MapContainer style={{ height: "100%", width: "100%" }}>
+        <MapContainer style={{ height: "100%", width: "100%" , zIndex:49 }}>
           <MapViewUpdater />
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Marker position={[coordinates.lat, coordinates.lon]} icon={customIcon}>
