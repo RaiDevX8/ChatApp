@@ -2,6 +2,8 @@
 
 This is a React-based web application that provides weather information and global news. It fetches the weather for a specific location and displays the current weather, hourly forecast, and weather details. Additionally, it provides the latest global news from various sources via the `GNews` API.
 
+https://forecast360.netlify.app/
+
 ## Features
 
 - **Weather Information**: 
